@@ -45,7 +45,7 @@ print(w_3)
 # boolean,float,int,string,tuple,list,set. Odpowiedź umieśc w stringu w_4
 # 1 pkt
 
-w_4 = "list, tuple, set"
+w_4 = "list, set"
 print(w_4)
 
 # 5. Dla stringa wypisz
@@ -88,7 +88,6 @@ print(w_6)
 # 3pkt
 
 def palindrom(s):
-
     lowerString = re.sub(r'[^a-zA-Z]', '', s.lower())
 
     for i in range(0, len(lowerString) // 2):
@@ -112,25 +111,17 @@ print(palindrom(s_7_1))
 # 2 pkt
 
 def fizzbuzz(n):
-    returnString = ""
+    returnString = []
     for i in range(1, n + 1):
-        returnString += f"{i}"
-        fizzString = ""
+        returnString.append(f"{i}")
+        if i % 3 == 0 and i % 5 == 0:
+            returnString.append("FizzBuzz")
+        elif i % 3 == 0:
+            returnString.append("Fizz")
+        elif i % 5 == 0:
+            returnString.append("Buzz")
 
-        if i % 3 == 0:
-            fizzString += "Fizz"
-
-        if i % 5 == 0:
-            fizzString += "Buzz"
-
-        if fizzString != "" and i != n:
-            fizzString += ","
-        if i != n:
-            returnString += ','
-
-        returnString += fizzString
-
-    return returnString
+    return ','.join(returnString)
 
 
 n_8 = 16
@@ -144,7 +135,15 @@ n_9 = 6
 
 
 def fibonacci(n):
-    pass
+    if n <= 1:
+        return n
+    a, b = 0, 1
+
+    for i in range(0, n):
+        temp = a + b
+        a = b
+        b = temp
+    return a
 
 
 print(fibonacci(n_9))
@@ -157,7 +156,22 @@ print(fibonacci(n_9))
 
 
 def binary_search(lista, e):
-    pass
+    low = 0
+    high = len(lista) - 1
+    while low <= high:
+
+        mid = (high + low) // 2
+
+        if lista[mid] < e:
+            low = mid + 1
+
+        elif lista[mid] > e:
+            high = mid - 1
+
+        else:
+            return mid
+
+    return None
 
 
 l_10 = [0, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768]
