@@ -89,12 +89,12 @@ print(w_6)
 
 def palindrom(s):
     lowerString = re.sub(r'[^a-zA-Z]', '', s.lower())
-
-    for i in range(0, len(lowerString) // 2):
-        if lowerString[i] != lowerString[len(lowerString) - 1 - i]:
-            return False
-
-    return True
+    return lowerString == lowerString[::-1]
+    ##for i in range(0, len(lowerString) // 2):
+    ##    if lowerString[i] != lowerString[len(lowerString) - 1 - i]:
+    ##        return False
+    ##
+    ##return True
 
 
 s_7_1 = "Nowy Targ, góry, Zakopane – na pokazy róg, graty won"
@@ -140,9 +140,8 @@ def fibonacci(n):
     a, b = 0, 1
 
     for i in range(0, n):
-        temp = a + b
-        a = b
-        b = temp
+        a, b = b, a + b
+
     return a
 
 
